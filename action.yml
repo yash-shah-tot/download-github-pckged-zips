@@ -58,5 +58,8 @@ runs:
                echo "Download completed"
             done
         fi
+        
+        cd ${{inputs.output_directory}}
+        ls -ltr
       shell: bash
           
