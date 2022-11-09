@@ -32,8 +32,9 @@ runs:
       run: |
         TMP_PREFIX_SRC="${{inputs.artifactId}}"
         TMP_SRC_PKG_VERSION=${{inputs.version}}
-        TMP_POSTFIX_SRC=${{inputs.classifier}}
+        TMP_POSTFIX_SRC=(${{inputs.classifier}})
         FINAL_STRING=()
+        echo $TMP_POSTFIX_SRC
 
         if [[ ${TMP_POSTFIX_SRC[@]} ]]; then
             for str in ${TMP_POSTFIX_SRC[@]}; do
