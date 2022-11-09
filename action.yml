@@ -6,9 +6,9 @@ inputs:
     description: 'Maven dependency artifact id.'
     required: true
 
-  runs:
-    steps:
-      - name: Download source zips
-        run: |
-          echo ${{ inputs.artifact-id }} 
-        shell: bash
+runs:
+  steps:
+    - name: Download source zips
+      run: |
+        echo ${{ inputs.artifact-id }} 
+      shell: bash
