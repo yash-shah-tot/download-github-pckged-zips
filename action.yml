@@ -8,6 +8,7 @@ inputs:
 
 
 runs:
+  using: "composite"
   steps:
     - name: Download source zips
       run: |
