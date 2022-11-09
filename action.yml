@@ -3,12 +3,13 @@ description: download zip from github repository packages uploaded through maven
 
 inputs:
   org_name:
-    description: Org name of the repo
+    description: 'Org name of the repo'
     required: true
 
-  runs:
-    steps:
-      - name: Download source zips
-        run: |
-          echo "${{inputs.org_name}}"
-        shell: bash
+
+runs:
+  steps:
+    - name: Download source zips
+      run: |
+        echo "${{inputs.org_name}}"
+      shell: bash
