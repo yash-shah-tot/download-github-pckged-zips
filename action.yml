@@ -54,7 +54,7 @@ runs:
             TMP_ARRAY=(${FINAL_STRING})
             for str in ${TMP_ARRAY[@]}; do
                echo "Downloading zip for $str"
-               curl -sLH "Authorization: token ${{inputs.github_token}}" https://maven.pkg.github.com/${{inputs.org_name}}/${{inputs.server_id}}/${{inputs.groupId}}/${{inputs.artifactId}}/${{inputs.version}}/$str -o ./${inputs.output_directory}/$str --create-dirs
+               curl -sLH "Authorization: token ${{inputs.github_token}}" https://maven.pkg.github.com/${{inputs.org_name}}/${{inputs.server_id}}/${{inputs.groupId}}/${{inputs.artifactId}}/${{inputs.version}}/$str -o ./${{inputs.output_directory}}/$str --create-dirs
                echo "Download completed"
             done
         fi
