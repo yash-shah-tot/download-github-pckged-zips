@@ -59,7 +59,7 @@ runs:
             done
         fi
         
-        cd ${{inputs.output_directory}}
+        cd ./${{inputs.output_directory}}
         ls -ltr
       shell: bash
           
