@@ -2,58 +2,13 @@ name: Download zips
 description: download zip from github repository packages uploaded through maven
 
 inputs:
-  github_token:
-    description: Local github token
-    required: true
   org_name:
     description: Org name of the repo
     required: true
-  server_id:
-    description: Id of the server
-    required: true
-  groupId:
-    description: Maven dependency group id.
-    required: true
-  artifactId:
-    description: Maven dependency artifact id.
-    required: true
-  version:
-    description: Maven dependency version
-    required: true
-  classifier:
-    description: Maven dependency classifier. Eg("get-retailer","post-retailer")
-  output_directory:
-    description: path to store downloaded zip(s). Eg src/artifacts/
 
   runs:
     steps:
       - name: Download source zips
         run: |
-          TMP_PREFIX_SRC="${{inputs.artifactId}}"
-          TMP_SRC_PKG_VERSION=${{inputs.version}}
-          TMP_POSTFIX_SRC=${{inputs.classifier}}
-          FINAL_STRING=()
-          
-          if [[ ${TMP_POSTFIX_SRC[@]} ]]; then
-              for str in ${TMP_POSTFIX_SRC[@]}; do
-                  FINAL_STRING+="${TMP_PREFIX_SRC}-${TMP_SRC_PKG_VERSION}-${str}.zip "
-              done
-          
-              TMP_ARRAY=(${FINAL_STRING})
-          
-              for str in ${TMP_ARRAY[@]}; do
-                echo "Downloading zip for $str"
-                curl -sLH "Authorization: token ${{inputs.github_token}}" https://maven.pkg.github.com/${{inputs.org_name}}/${{inputs.server_id}}/${{inputs.groupId}}/${{inputs.artifactId}}/${{inputs.version}}/$str -o ./${inputs.output_directory}/$str --create-dirs
-                echo "Download completed"
-              done
-          
-          else
-              FINAL_STRING+="${TMP_PREFIX_SRC}-${TMP_SRC_PKG_VERSION}.zip"
-              TMP_ARRAY=(${FINAL_STRING})
-              for str in ${TMP_ARRAY[@]}; do
-                 echo "Downloading zip for $str"
-                 curl -sLH "Authorization: token ${{inputs.github_token}}" https://maven.pkg.github.com/${{inputs.org_name}}/${{inputs.server_id}}/${{inputs.groupId}}/${{inputs.artifactId}}/${{inputs.version}}/$str -o ./${inputs.output_directory}/$str --create-dirs
-                 echo "Download completed"
-              done
-          fi
+          echo "${{inputs.org_name}}"
         shell: bash
