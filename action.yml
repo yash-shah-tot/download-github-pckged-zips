@@ -3,27 +3,27 @@ description: download zip from github repository packages uploaded through maven
 
 inputs:
   github_token:
-    description: Local github token
+    description: 'Local github token'
     required: true
   org_name:
-    description: Org name of the repo
+    description: 'Org name of the repo'
     required: true
   server_id:
-    description: Id of the server
+    description: 'Id of the server'
     required: true
   groupId:
-    description: Maven dependency group id.
+    description: 'Maven dependency group id.'
     required: true
   artifactId:
-    description: Maven dependency artifact id.
+    description: 'Maven dependency artifact id.'
     required: true
   version:
-    description: Maven dependency version
+    description: 'Maven dependency version'
     required: true
   classifier:
-    description: Maven dependency classifier. Eg("get-retailer","post-retailer")
+    description: 'Maven dependency classifier. Eg("get-retailer","post-retailer")'
   output_directory:
-    description: path to store downloaded zip(s). Eg src/artifacts/
+    description: 'path to store downloaded zip(s). Eg src/artifacts/'
 
 runs:
   using: "composite"
