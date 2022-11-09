@@ -26,7 +26,6 @@ inputs:
     description: path to store downloaded zip(s). Eg src/artifacts/
 
   runs:
-    using: "composite"
     steps:
       - name: Download source zips
         run: |
@@ -46,7 +45,6 @@ inputs:
               for str in ${TMP_ARRAY[@]}; do
                 echo "Downloading zip for $str"
                 curl -sLH "Authorization: token ${{inputs.github_token}}" https://maven.pkg.github.com/${{inputs.org_name}}/${{inputs.server_id}}/${{inputs.groupId}}/${{inputs.artifactId}}/${{inputs.version}}/$str -o ./${inputs.output_directory}/$str --create-dirs
-                curl -sLH "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://maven.pkg.github.com/TakeoffTech/github-takeoff/com.takeoff/${TMP_PREFIX_SRC}/${TMP_SRC_PKG_VERSION}/$str -o ./src/artifacts/$str --create-dirs
                 echo "Download completed"
               done
           
